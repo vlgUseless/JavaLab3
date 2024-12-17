@@ -29,4 +29,9 @@ public class TicketSystem {
         currentNumber = (currentNumber % maxTickets) + 1;
         notifyAll(); // оповещаем всех ожидающих
     }
+
+    // Для мониторинга
+    public synchronized int getCurrentNumber() {
+        return currentNumber;
+    }
 }
