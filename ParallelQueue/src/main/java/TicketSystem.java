@@ -25,5 +25,8 @@ public class TicketSystem {
     }
 
     // Когда обслуживание закончилось, увеличиваем currentNumber и оповещаем другие потоки
-    public synchronized void done() {}
+    public synchronized void done() {
+        currentNumber = (currentNumber % maxTickets) + 1;
+        notifyAll(); // оповещаем всех ожидающих
+    }
 }
