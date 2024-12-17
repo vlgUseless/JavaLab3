@@ -18,7 +18,11 @@ public class TicketSystem {
     }
 
     // Ожидаем, пока currentNumber не будет равен ticket
-    public synchronized void waitForTurn(int ticket) throws InterruptedException {}
+    public synchronized void waitForTurn(int ticket) throws InterruptedException {
+        while (currentNumber != ticket) {
+            wait(); // ждем, пока currentNumber не изменится
+        }
+    }
 
     // Когда обслуживание закончилось, увеличиваем currentNumber и оповещаем другие потоки
     public synchronized void done() {}
