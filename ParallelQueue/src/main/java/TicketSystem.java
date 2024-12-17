@@ -10,7 +10,12 @@ public class TicketSystem {
     }
 
     // Выдать следующий билет покупателю
-    public synchronized int getTicket() {}
+    public synchronized int getTicket() {
+        int ticket = nextTicket;
+        // Следующий билет после MT будет снова 1
+        nextTicket = (nextTicket % maxTickets) + 1;
+        return ticket;
+    }
 
     // Ожидаем, пока currentNumber не будет равен ticket
     public synchronized void waitForTurn(int ticket) throws InterruptedException {}
