@@ -7,7 +7,7 @@ public class Main {
 
         // Создаем и запускаем потоки-покупателей
         for (int i = 0; i < numberOfCustomers; i++) {
-            Thread customerThread = new Thread(new Customer(system));
+            Thread customerThread = new Thread(new Customer(system, i));
             customerThread.start();
 
             try {
